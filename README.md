@@ -2,6 +2,9 @@
 
 Multicharacter and spawn selector for **QBX**, **QBCore** and **ESX**.
 
+Preview [https://youtu.be/yEcGf1Lzots]
+For more cool scripts check out [https://bakeryscripts.com]
+
 ## Features
 
 - **Character line-up**: your characters stand in the world, each with their own idle, plus one see-through slot
