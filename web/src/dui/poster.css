@@ -1,0 +1,97 @@
+@import "@fontsource-variable/geist";
+
+/* The backdrop is always rendered at 1920x1080 by the DUI (client/backdrop.lua), so everything is in px.
+   Its background is pure black and nothing touches the edges: the game draws a plain black wall around
+   it and the two have to blend. */
+html, body, #root {
+  margin: 0;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background: #000;
+}
+
+body {
+  color: #f6f6f5;
+  font-family: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Shown / hidden instantly: the UI's shutter covers the swap. */
+.stage { position: absolute; inset: 0; opacity: 0; }
+.stage.on { opacity: 1; }
+.stage > div > * { position: absolute; }
+
+.glow {
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04) 55%, transparent);
+  animation: fade 1.1s ease 0.1s both;
+}
+.pool {
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.10), transparent);
+  animation: fade 1.1s ease 0.2s both;
+}
+
+.rail {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.16) 18%, rgba(255, 255, 255, 0.16));
+  transform-origin: bottom;
+  animation: grow-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.line > * { position: absolute; }
+.line { animation: fade 0.5s ease both; animation-delay: inherit; }
+.line .bar, .line .tick { animation: draw 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: inherit; }
+
+/* full-width line every 50 cm, softer behind the character so it never fights the silhouette */
+.bar {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-mask-image: linear-gradient(90deg, #000, #000 16%, rgba(0, 0, 0, 0.3) 38%, rgba(0, 0, 0, 0.3) 62%, #000 84%, #000);
+  mask-image: linear-gradient(90deg, #000, #000 16%, rgba(0, 0, 0, 0.3) 38%, rgba(0, 0, 0, 0.3) 62%, #000 84%, #000);
+  transform-origin: center;
+}
+/* short tick every 10 cm */
+.tick {
+  width: 26px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.label {
+  width: 64px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.42);
+}
+.label.unit { text-align: left; width: 90px; color: rgba(255, 255, 255, 0.22); }
+
+.floor {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 30%, rgba(255, 255, 255, 0.5) 70%, transparent);
+  animation: draw 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.plate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.34);
+  white-space: nowrap;
+  animation: fade 0.8s ease 0.45s both;
+}
+.plate b { color: #f6f6f5; font-weight: 900; }
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes draw { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes grow-up { from { transform: scaleY(0); } to { transform: none; } }

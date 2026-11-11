@@ -1,0 +1,3 @@
+# Dependencies (web/dist IS committed: FiveM serves the built UI from it)
+node_modules/
+
