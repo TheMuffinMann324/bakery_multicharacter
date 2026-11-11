@@ -164,7 +164,7 @@ lib.callback.register(EV('play'), function(src, slot)
     end
 
     sessions[src] = nil
-    print(('[bakery_multicharacter] %s loaded character %s'):format(GetPlayerName(src) or src, character.id))
+    Utils.debug(('%s loaded character %s'):format(GetPlayerName(src) or src, character.id))
     return { ok = true, id = character.id, position = Bridge.position(src), homes = Housing.list(src, Bridge.citizenId(src)) }
 end)
 
@@ -265,7 +265,7 @@ lib.callback.register(EV('create'), function(src, payload)
     end
 
     sessions[src] = nil
-    print(('[bakery_multicharacter] %s created %s %s (slot %d)'):format(GetPlayerName(src) or src, firstName, lastName, slot))
+    Utils.debug(('%s created %s %s (slot %d)'):format(GetPlayerName(src) or src, firstName, lastName, slot))
     if Utils.startingApartment() == 'qbx_properties' then awaitingApartment[src] = true end
     return {
         ok = true,
@@ -298,7 +298,7 @@ lib.callback.register(EV('delete'), function(src, slot)
     if not ok or not deleted or bySlot[character.slot] then
         return { ok = false, error = 'Could not delete this character.', characters = characters, slots = slots }
     end
-    print(('[bakery_multicharacter] %s deleted character %s'):format(GetPlayerName(src) or src, character.id))
+    Utils.debug(('%s deleted character %s'):format(GetPlayerName(src) or src, character.id))
     return { ok = true, characters = characters, slots = slots }
 end)
 

@@ -4,7 +4,7 @@ lua54 'yes'
 
 name 'bakery_multicharacter'
 author 'Bakery'
-description 'Character select and spawn map: a line-up scene, a DUI poster behind your character and a live city map - ESX, QBCore and QBX'
+description 'Multicharacter and spawn selector for QBX, QBCore and ESX'
 version '1.0.0'
 
 -- ESX turns its multicharacter mode on when a resource called esx_multicharacter exists.
@@ -52,10 +52,4 @@ server_scripts {
 dependencies {
     'ox_lib',
     'oxmysql',
-}
-
-escrow_ignore {
-    'config.lua',
-    'shared/*.lua',
-    'bridge/*.lua',
 }

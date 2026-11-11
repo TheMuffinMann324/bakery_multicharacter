@@ -2,8 +2,7 @@
 
 Multicharacter and spawn selector for **QBX**, **QBCore** and **ESX**.
 
-Preview [https://youtu.be/yEcGf1Lzots]
-For more cool scripts check out [https://bakeryscripts.com]
+**[Preview video](https://youtu.be/yEcGf1Lzots)** · More scripts at [bakeryscripts.com](https://bakeryscripts.com)
 
 ## Features
 
@@ -74,6 +73,7 @@ Everything is in `config.lua`:
 | `Spawn.Homes` | Spawn inside owned houses / apartments (`'auto'`, a housing script name, or `false`). |
 | `Spawn.StartingApartment` | QBX: new characters pick a qbx_properties apartment first. |
 | `Spawn.Locations` | Preset spawn points. |
+| `Framework`, `ESX`, `Debug` | Advanced: force a framework, ESX identifier/date format, extra console logs. |
 
 ## Controls on the spawn map
 
